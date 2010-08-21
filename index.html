@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- Source is http://www.trilancer.com/jpolite/#t1 -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Server Portal</title>
+<link href="css/main.css" rel="stylesheet" type="text/css"/>
+<link href="css/thickbox.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="header">
+	<div id="logo"></div>
+	<div id="title">Server Portal</div>
+	<div id="header_tabs">
+	<ul>
+		<li id="t1">Server Management</li>
+		<li id="t2">SSH</li>
+		<li id="t3">About US</li>
+<!--	<li id="t4">Controls</li>
+		<li id="t5">Extras</li>
+		<li id="t7">RSS Reader</li>
+		<li id="t8">Netvibes UWA</li>
+		<li id="t6">Download</li>
+-->	</ul>
+	</div>
+	<div id="header_bar"><div id="loading"><img src="images/loading.gif" alt="loading..." /></div>
+		<span class="right">
+			<img id="expd" src="images/s.gif" alt="Expand All Modules"/>
+			<img id="clps" src="images/s.gif" alt="Collapse All"/>
+		</span>
+		<span class="hint right">Adjust module layout</span>
+	</div>
+</div>
+
+
+<table id="main_table">
+<tr><td style="position:relative">
+<div id="main">
+
+	<div id="c1" class="main_containers"></div>	
+	<div id="c2" class="main_containers"></div>	
+	<div id="c3" class="main_containers"></div>	
+</div>
+</td></tr></table>
+
+<div id="footer">
+<div id="footer_bar">
+</div>
+
+<!-- A hidden module template is carried within the page, which can be modified easily -->
+<div id="module_template" class="module">
+	<div class="moduleFrame">
+		<div class='moduleHeader'>
+			<span class="moduleIcon"><img alt="icon" src="images/icon.gif"/></span>
+			<div class='moduleTitle'></div>
+			<div class='moduleActions'>
+				<b title="Refresh" class="action_refresh"></b>
+				<b title="Collapse" class="action_min"></b>
+				<b title="Expand" class="action_max"></b>
+				<b title="Close" class="action_close"></b>
+			</div>
+		</div>
+		<div class='moduleContent'>
+			<img src="images/loading.gif" alt="Loading..."/> 
+		</div>
+	</div>
+</div>
+</div>
+<script type="text/javascript" src="js/modules.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.ui.js"></script>
+<script type="text/javascript" src="js/jquery.history.js"></script>
+<script type="text/javascript" src="js/jquery.myext.js"></script>
+<script type="text/javascript" src="js/thickbox.js"></script>
+<script type="text/javascript" src="js/IFrameMessaging.js"></script>
+<script type="text/javascript">
+msgHandler = function(message) {
+  var id = message.id;
+  switch (message.action) {
+    case 'resizeHeight':
+      var frame = document.getElementById('frame_' + id);
+      if (frame) {
+        frame.setAttribute('height', message.value);
+      }
+      break;
+   default:
+      console.log(message.action + ': not implemented - ' + message.name + ':' + message.value);
+      break;
+  }
+};
+ 
+UWA.MessageHandler = new UWA.iFrameMessaging;
+UWA.MessageHandler.init({
+    'eventHandler': msgHandler,
+    'trustedOrigin' : 'nvmodules.netvibes.com'
+});
+</script>
+</body>
+</html>
